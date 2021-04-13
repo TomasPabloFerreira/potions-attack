@@ -25,4 +25,44 @@ describe('custom hook: usePotions', () => {
 		expect(potions.green).toEqual(1)
 		expect(potions.yellow).toEqual(2)
 	})
+	it('gets the best attack correctly (case 1)', () => {
+		const initialState = { red: 2, blue: 1, green: 1, yellow: 0, gray: 0 }
+		const wrapper = shallow(<Test hook={() => usePotions(initialState)} />)
+		const { getBestCombination } = wrapper.props()
+		const result = getBestCombination()
+		expect(result).toEqual({
+			total: 13,
+			attacks: [
+				{ percentage: 10, potions: ['red', 'blue', 'green'] },
+				{ percentage: 3, potions: ['red'] },
+			]
+		})
+	})
+	it('gets the best attack correctly (case 2)', () => {
+		const initialState = { red: 2, blue: 2, green: 1, yellow: 1, gray: 1 }
+		const wrapper = shallow(<Test hook={() => usePotions(initialState)} />)
+		const { getBestCombination } = wrapper.props()
+		const result = getBestCombination()
+		expect(result).toEqual({
+			total: 31,
+			attacks: [
+				{ percentage: 25, potions: ['red', 'blue', 'green', 'yellow', 'gray'] },
+				{ percentage: 3, potions: ['red'] },
+				{ percentage: 3, potions: ['blue'] }
+			]
+		})
+	})
+	it('gets the best attack correctly (case 3)', () => {
+		const initialState = { red: 2, blue: 2, green: 2, yellow: 1, gray: 1 }
+		const wrapper = shallow(<Test hook={() => usePotions(initialState)} />)
+		const { getBestCombination } = wrapper.props()
+		const result = getBestCombination()
+		expect(result).toEqual({
+			total: 35,
+			attacks: [
+				{ percentage: 25, potions: ['red', 'blue', 'green', 'yellow', 'gray'] },
+				{ percentage: 10, potions: ['red', 'blue', 'green'] },
+			]
+		})
+	})
 })
