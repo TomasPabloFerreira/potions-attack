@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, ScrollView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
+import { PotionCounter, Text } from './components'
 
 export default function App() {
 	return (
@@ -9,7 +10,12 @@ export default function App() {
 			colors={['#667eea', '#764ba2']}
 			style={styles.background}
 		>
-			<Text>Potions Attack</Text>
+			<Text style={styles.title}>Potions Attack</Text>
+
+			<ScrollView style={styles.potionsList}>
+				<PotionCounter subscribe={() => () => {}} color="red" />
+			</ScrollView>
+
 			<StatusBar style="auto" />
 		</LinearGradient>
 	)
@@ -23,5 +29,15 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		paddingTop: '40%',
 		paddingBottom: '20%'
+	},
+	title: {
+		fontSize: 28,
+		color: '#ddd'
+	},
+	potionsList: {
+		margin: 32,
+		borderWidth: 1,
+		borderColor: '#ddd',
+		borderRadius: 32,
 	}
 })

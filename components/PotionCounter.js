@@ -12,7 +12,7 @@ const PotionCounter = ({ color, subscribe }) => {
 			>
 				<Text>Remove</Text>
 			</TouchableOpacity>
-			<Text>{color}</Text>
+			<Text style={{color: color}}>{color}</Text>
 			<TouchableOpacity
 				onPress={subscribe('add', color)}
 				className="addButton"
