@@ -3,25 +3,6 @@ import { potionsReducer } from '../reducers'
 
 const initialState = { red: 0, blue: 0, green: 0, yellow: 0, gray: 0 }
 
-/*
-example input
-{
-	red: 2,
-	blue: 1,
-	green: 1,
-	yellow: 0,
-	gray: 0
-}
-example output
-{
-	total: 13,
-	attacks: [
-		{ percentage: 10, potions: ['red', 'blue', 'green'] },
-		{ percentage: 3, potions: ['red'] },
-	]
-}
-*/
-
 const percentages = {
 	1: 3,
 	2: 5,
