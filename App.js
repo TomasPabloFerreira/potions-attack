@@ -1,13 +1,21 @@
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
-import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
+import React, { useState, useMemo } from 'react'
+import { StyleSheet, ScrollView, Modal } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
-import { PotionCounter, Text, Button } from './components'
+import { PotionCounter, Text, Button, BestCombinationModal } from './components'
 import { usePotions } from './hooks'
 
 export default function App() {
 
+	const [modalVisible, setModalVisible] = useState(false)
 	const { potions, subscribe, getBestCombination } = usePotions()
+
+	const bestCombination = useMemo(() => getBestCombination(), [potions])
+
+
+	const handlePress = () => {
+		setModalVisible(true)
+	}
 
 	return (
 		<LinearGradient
@@ -27,7 +35,13 @@ export default function App() {
 				))}
 			</ScrollView>
 
-			<Button title="Get the best attack" onPress={getBestCombination} />
+			<Button title="Get the best attack" onPress={handlePress} />
+
+			<BestCombinationModal
+				visible={modalVisible}
+				bestCombination={bestCombination}
+				handleRequestClose={() => setModalVisible(false)}
+			/>
 
 			<StatusBar style="auto" />
 		</LinearGradient>
