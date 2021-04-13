@@ -3,11 +3,12 @@ import React from 'react'
 import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { PotionCounter, Text, Button } from './components'
-
-const potions = { red: 1, blue: 0, green: 0, yellow: 3, gray: 1 }
-
+import { usePotions } from './hooks'
 
 export default function App() {
+
+	const { potions, subscribe, getBestCombination } = usePotions()
+
 	return (
 		<LinearGradient
 			colors={['#667eea', '#764ba2']}
@@ -19,7 +20,7 @@ export default function App() {
 				{Object.keys(potions).map(x => (
 					<PotionCounter
 						key={x}
-						subscribe={() => () => {}}
+						subscribe={subscribe}
 						color={x}
 						count={potions[x]}
 					/>
