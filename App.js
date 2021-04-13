@@ -4,6 +4,9 @@ import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { PotionCounter, Text, Button } from './components'
 
+const potions = { red: 1, blue: 0, green: 0, yellow: 3, gray: 1 }
+
+
 export default function App() {
 	return (
 		<LinearGradient
@@ -13,7 +16,14 @@ export default function App() {
 			<Text style={styles.title}>Potions Attack</Text>
 
 			<ScrollView style={styles.potionsList}>
-				<PotionCounter subscribe={() => () => {}} color="red" />
+				{Object.keys(potions).map(x => (
+					<PotionCounter
+						key={x}
+						subscribe={() => () => {}}
+						color={x}
+						count={potions[x]}
+					/>
+				))}
 			</ScrollView>
 
 			<Button title="Get the best attack" onPress={() => {console.log('working')}} />
