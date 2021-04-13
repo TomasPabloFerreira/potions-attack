@@ -27,7 +27,7 @@ export default function App() {
 				))}
 			</ScrollView>
 
-			<Button title="Get the best attack" onPress={() => {console.log('working')}} />
+			<Button title="Get the best attack" onPress={getBestCombination} />
 
 			<StatusBar style="auto" />
 		</LinearGradient>
