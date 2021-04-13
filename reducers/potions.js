@@ -7,10 +7,12 @@ const reducer = (state, action) => {
 					[color]: state[color] + 1
 			}
 		case 'remove':
-			return {
+			return state[color] > 0
+				? {
 					...state,
 					[color]: state[color] - 1
-			}
+				}
+				: state
 		default: return state
 	}
 }

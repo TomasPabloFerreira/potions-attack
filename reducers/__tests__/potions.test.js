@@ -19,5 +19,11 @@ describe('reducer: potions', () => {
 
 		expect(newState).toEqual({ red: 1, blue: 0, green: 0, yellow: 3, gray: 1 })
 	})
+	it('does not remove if count is zero', () => {
+		const initialState = { red: 3, blue: 1, green: 0, yellow: 3, gray: 1 }
+		let newState = reducer(initialState, { type: 'remove', payload: { color: 'green' }})
+
+		expect(newState).toEqual({ red: 3, blue: 1, green: 0, yellow: 3, gray: 1 })
+	})
 })
 
