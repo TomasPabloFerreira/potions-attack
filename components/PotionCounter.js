@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Text, CounterButton } from '../components'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const PotionCounter = ({ color, count, subscribe }) => {
 
@@ -12,8 +13,8 @@ const PotionCounter = ({ color, count, subscribe }) => {
 				className="removeButton"
 			/>
 			<View style={styles.countContainer}>
-				<Text style={styles.count}>{count}</Text>
-				<Text style={{color: color}}>{color}</Text>
+				<Text style={styles.count}>{count} x</Text>
+				<MaterialCommunityIcons name="bottle-tonic-skull" size={42} color={color} />
 			</View>
 			<CounterButton
 				mode="add"
@@ -37,9 +38,12 @@ const styles = StyleSheet.create({
 	},
 	countContainer: {
 		display: 'flex',
-		flexDirection: 'row'
+		flexDirection: 'row',
+		alignItems: 'flex-end'
 	},
 	count: {
-		marginRight: 8
+		marginRight: -2,
+		marginBottom: 2,
+		fontSize: 18
 	}
 })
