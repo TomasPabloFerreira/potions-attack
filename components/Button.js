@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#3b0054',
+		backgroundColor: '#Ab3074',
 		borderRadius: 32,
 		borderWidth: 2,
-		borderColor: '#1e0026'
+		borderColor: '#4e0036'
 	},
 	buttonText: {
 		fontWeight: 'bold',
