@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import { Text } from '.'
+import Text from './Text'
 
 const CounterButton = ({ mode, ...rest }) => {
 	return (

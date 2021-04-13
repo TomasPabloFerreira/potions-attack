@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet } from 'react-native'
-import { Text } from './'
+import Text from './Text'
 
 const Button = ({ title, ...rest }) => {
 	return(

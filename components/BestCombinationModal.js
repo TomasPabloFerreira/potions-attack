@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal, View, StyleSheet, TouchableOpacity } from 'react-native'
-import { Text } from '.'
+import Text from './Text'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const BestCombinationModal = ({ visible, bestCombination, handleRequestClose }) => {
@@ -27,8 +27,9 @@ const BestCombinationModal = ({ visible, bestCombination, handleRequestClose }) 
 					{bestCombination.attacks.map((x, i) => (
 						<View key={i} style={styles.row}>
 							<View style={styles.potionsCell}>
-								{x.potions.map(color => (
+								{x.potions.map((color, ii) => (
 									<MaterialCommunityIcons
+										key={ii}
 										name="bottle-tonic-skull"
 										size={42}
 										color={color}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { Text, CounterButton } from '../components'
+import Text from './Text'
+import CounterButton from './CounterButton'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const PotionCounter = ({ color, count, subscribe }) => {
